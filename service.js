@@ -5,7 +5,7 @@ class PokemonService {
 
 	async get() {
 		try {
-			let records = await this._base('Table 1').select({ view: 'Grid view' }).all();
+			let records = await this._base('Pokemons').select({ view: 'Grid view' }).all();
 			let pokemons = records.map(record => ({
 				id: record.get('id'),
 				name: record.get('name'),
