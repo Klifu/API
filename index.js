@@ -1,6 +1,8 @@
 const app = require('express')();
+const cors = require('cors');
 const {PokemonService} = require('./service');
 
+app.use(cors());
 
 app.get('/', (req,res) => {
 	return res.send("Welcome to klifu API");
