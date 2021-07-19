@@ -5,7 +5,7 @@ const {PokemonService} = require('./service');
 app.use(cors());
 
 app.get('/', (req,res) => {
-	return res.send("Welcome to klifu API");
+	return res.send("Welcome to klifu API and have fun!");
 });
 
 
