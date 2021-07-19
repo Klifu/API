@@ -10,7 +10,13 @@ class PokemonService {
 				id: record.get('id'),
 				name: record.get('name'),
 				type: record.get('type'),
-				sprite: record.get('sprite')[0].url
+				sprite: record.get('sprite')[0].url,
+				baseStat: {
+					attack: record.get('attack'),
+					defense: record.get('defense'),
+					hp: record.get('hp')
+				},
+				rarity: record.get('rarity')
 			}))
 
 			return { pokemons }
