@@ -6,7 +6,8 @@ const swaggerDoc = require('./swagger.json');
 
 app.use(cors());
 
-app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use(swaggerUI.serve );
+app.get('/', swaggerUI.setup(swaggerDoc));
 
 
 app.get('/pokemons', async (req, res) => {
