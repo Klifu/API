@@ -6,7 +6,6 @@ Klifu-API
 
 </h1>
 
-
 This is a backbone of **Klifu**. This acts as a datastore for our game data, which will be priodically changed to update the game.  
 
 ## Getting Started
@@ -23,3 +22,4 @@ To run the application on your local machine follow these steps
 API_KEY=${airtable_api_key}
 BASE=${airtable_base_ID}
 ```
+
