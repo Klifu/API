@@ -1,10 +1,7 @@
-<h1 align="center">
 
-<img src="./klifu.gif" alt="logo" width="200"  />
+<img src="https://github.com/Klifu/klifu/blob/main/assets/banner-dark.png" />
 
-Klifu-API
-
-</h1>
+# Klifu API
 
 This is a backbone of **Klifu**. This acts as a datastore for our game data, which will be priodically changed to update the game.  
 
