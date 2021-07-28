@@ -1,8 +1,18 @@
+<p align="center">
+<img src="https://github.com/Klifu/klifu/blob/main/assets/banner-dark.png" alt="banner" width="500" />
+<br>
+<h1 align="center">API</h1>
+</p>
 
-<img src="https://github.com/Klifu/klifu/blob/main/assets/banner-dark.png" />
+> Under Development 🔨
 
-# Klifu API
+## Table of Contents 
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [contributing](#contributing)
+- [Documentation](#documentation)
 
+## Overview
 This is a backbone of **Klifu**. This acts as a datastore for our game data, which will be priodically changed to update the game.  
 
 ## Getting Started
@@ -20,3 +30,11 @@ API_KEY=${airtable_api_key}
 BASE=${airtable_base_ID}
 ```
 
+## Contributing 
+👍🎉 First off, thanks for taking the time to contribute! 🎉👍
+
+For instructions to start contributing check out [Klifu](https://github.com/klifu/klifu).
+
+
+## Documentation 
+> Visit our [API](https://klifu.deta.dev/) for openapi spec. 
