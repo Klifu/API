@@ -3,7 +3,7 @@ class PokemonController {
         this.pokemonService = pokemonService;
     }
 
-    async getPokemons(req, res) {
+    async getAllPokemons(req, res) {
         const { pokemons, error } = await this.pokemonService.get();
         if (error) return res.status(404).send(error);
 
