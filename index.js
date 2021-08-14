@@ -12,6 +12,6 @@ app.use(cors());
 app.use(swaggerUI.serve);
 app.get('/', swaggerUI.setup(swaggerDoc));
 
-app.get('/pokemons', pokemonController.getAllPokemons);
+app.get('/pokemons', async (req,res) => pokemonController.getAllPokemons(req,res));
 
 module.exports = app;
