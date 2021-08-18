@@ -5,13 +5,10 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerDoc = require('./swagger.json');
 const { PokemonController } = require('./controller/controller');
 
-const pokemonController = new PokemonController(new PokemonService());
+const pokemonRouter = require('./routes/pokemonRoutes');
 
 app.use(cors());
-
 app.use(swaggerUI.serve);
-app.get('/', swaggerUI.setup(swaggerDoc));
-
-app.get('/pokemons', async (req,res) => pokemonController.getAllPokemons(req,res));
+app.use('/', pokemonRouter);
 
 module.exports = app;
