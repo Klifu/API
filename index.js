@@ -1,6 +1,5 @@
 const app = require('express')();
 const cors = require('cors');
-const { PokemonService } = require('./service');
 const swaggerUI = require('swagger-ui-express');
 const swaggerDoc = require('./swagger.json');
 
@@ -10,6 +9,6 @@ app.use(cors());
 app.use(swaggerUI.serve);
 app.get('/', swaggerUI.setup(swaggerDoc));
 
-app.use('/', pokemonRouter);
+app.use('/pokemons', pokemonRouter);
 
 module.exports = app;

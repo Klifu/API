@@ -6,7 +6,7 @@ const pokemonController = new PokemonController(new PokemonService());
 const router = express.Router();
 
 router
-    .route('/pokemons')
+    .route('/')
     .get(async (req,res) => pokemonController.getAllPokemons(req,res));
 
 module.exports = router;
