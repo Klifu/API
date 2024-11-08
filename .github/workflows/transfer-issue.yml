@@ -26,6 +26,6 @@ jobs:
       - name: Trasfer Issue
         working-directory: ./
         run: |
-          gh issue transfer ${{github.event.issue.number}} asyncapi/${{steps.extract_step.outputs.repo}}
+          gh issue transfer ${{github.event.issue.number}} klifu/${{steps.extract_step.outputs.repo}}
         env:
             GH_TOKEN: ${{ secrets.GOD_TOKEN }}
