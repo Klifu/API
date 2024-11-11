@@ -30,7 +30,7 @@ jobs:
           script: |
             const [owner, repo] = process.env.GITHUB_REPOSITORY
             const repoToMove = process.env.REPO_TO_MOVE
-            const issue_number: process.env.ISSUE_NUMBER
+            const issue_number = process.env.ISSUE_NUMBER
             try {
             const {data} = await github.rest.repos.get({
               owner,
