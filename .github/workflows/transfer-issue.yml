@@ -37,11 +37,12 @@ jobs:
               repo: repoToMove
             })
             }catch (e) {
+              const body = `${repoToMove} is not a repo under ${owner}. You can only transfer issue to repos that belong to the same organisation.`
               gtihub.rest.issues.craeteComment({
                 owner,
                 repo,
                 issue_number,
-                `${repoToMove} is not a repo under ${owner}. You can only transfer issue to repos that belong to ${owner}`
+                body
               })
             }
         env:
