@@ -38,7 +38,7 @@ jobs:
             })
             }catch (e) {
               const body = `${repoToMove} is not a repo under ${owner}. You can only transfer issue to repos that belong to the same organisation.`
-              await github.rest.issues.craeteComment({
+              await github.rest.issues.createComment({
                 owner,
                 repo,
                 issue_number,
