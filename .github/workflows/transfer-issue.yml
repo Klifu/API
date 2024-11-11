@@ -23,6 +23,33 @@ jobs:
           COMMENT="${{github.event.comment.body}}"
           REPO=$(echo $COMMENT | awk '{print $2}')
           echo repo=$REPO >> $GITHUB_OUTPUT
+      - name: Check Repo
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            import {Octokit} from '@octokit/action'
+            const [owner, repo] = process.env.GITHUB_REPOSITORY
+            const repoToMove = process.env.REPO_TO_MOVE
+            const issue_number: process.env.ISSUE_NUMBER
+            try {
+            const {data} = await github.rest.repos.get({
+              owner,
+              repo: repoToMove
+            })
+            }catch (e) {
+              gtihub.rest.issues.craeteComment({
+                owner,
+                repo,
+                issue_number,
+                `${repoToMove} is not a repo under ${owner}. You can only transfer issue to repos that belong to ${owner}`
+              })
+            }
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPO_TO_MOVE: ${{steps.extract_step.outputs.repo}}
+          ISSUE_NUMBER: ${{github.event.issue.number}}
+
       - name: Trasfer Issue
         id: transfer_issue
         working-directory: ./
@@ -31,10 +58,4 @@ jobs:
         continue-on-error: true
         env:
             GH_TOKEN: ${{ secrets.GOD_TOKEN }}
-      - name: Output
-        if: ${{steps.transfer_issue.outcome == 'failure'}}
-        run: | 
-          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -d '{"body": "${{steps.transfer_issue.outputs}}"}'
+          
