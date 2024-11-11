@@ -24,8 +24,17 @@ jobs:
           REPO=$(echo $COMMENT | awk '{print $2}')
           echo repo=$REPO >> $GITHUB_OUTPUT
       - name: Trasfer Issue
+        id: transfer_issue
         working-directory: ./
         run: |
           gh issue transfer ${{github.event.issue.number}} klifu/${{steps.extract_step.outputs.repo}}
+        continue-on-error: true
         env:
             GH_TOKEN: ${{ secrets.GOD_TOKEN }}
+      - name: Output
+        if: ${{ failure() && steps.transfer_issue.conclusion == 'failure'}}
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -d '{"body": "There has been some error while transferring your issue could you try it again."}'
