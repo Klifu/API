@@ -32,7 +32,7 @@ jobs:
             const repoToMove = process.env.REPO_TO_MOVE
             const issue_number = process.env.ISSUE_NUMBER
             try {
-            const {data} = await github.rest.repos.get({
+            const {data} = await octokit.rest.repos.get({
               owner,
               repo: repoToMove
             })
