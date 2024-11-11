@@ -29,6 +29,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const [owner, repo] = process.env.GITHUB_REPOSITORY
+            console.log(process.env.GITHUB_REPOSITORY)
             const repoToMove = process.env.REPO_TO_MOVE
             const issue_number = process.env.ISSUE_NUMBER
             try {
