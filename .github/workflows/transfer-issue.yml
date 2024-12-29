@@ -29,6 +29,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const r = process.env.GITHUB_REPOSITORY
+            console.log(process.env)
             const [owner, repo] = r.split('/')
             console.log(process.env.GITHUB_REPOSITORY)
             const repoToMove = process.env.REPO_TO_MOVE
