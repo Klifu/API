@@ -28,11 +28,12 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            console.log("${{ github.repository }}")
             const r = process.env.GITHUB_REPOSITORY
             const [owner, repo] = r.split('/')
             console.log(process.env.GITHUB_REPOSITORY)
             const repoToMove = process.env.REPO_TO_MOVE
-            const issue_number = process.env.ISSUE_NUMBER
+            const issue_number = context.issue.number
             try {
             const {data} = await github.rest.repos.get({
               owner,
