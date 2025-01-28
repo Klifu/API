@@ -51,11 +51,9 @@ jobs:
                 process.exit(1)
             }
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           REPO_TO_MOVE: ${{steps.extract_step.outputs.repo}}
-          ISSUE_NUMBER: ${{github.event.issue.number}}
 
-      - name: Trasfer Issue
+      - name: Transfer Issue
         id: transfer_issue
         working-directory: ./
         run: |
